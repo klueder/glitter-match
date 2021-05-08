@@ -19,20 +19,18 @@ let imageURLS = ["/glitterJPGs/blue.jpg", "/glitterJPGs/hotPink.jpg", "/glitterJ
 let randomCardArray = []
 let secondRandomCardArray = []
 
-// Need function for random img placement
-
-//need to add if statement for not repeating colors in first set 
+// Function for random img placement
 
 function randomPic() {
     for (let i = 0; randomCardArray.length < 8; i++) {
         let randomNum = Math.floor(Math.random() * 8)
+        // if statement to ensure image only appears once per array
         if (randomCardArray.includes(imageURLS[randomNum]) !== true) {
         randomCardArray.push(imageURLS[randomNum])
         } else {
             console.log("error")
         }
         console.log(randomCardArray)
-        // console.log(pic1)
         document.getElementById('pic1').src = randomCardArray[0];
         document.getElementById('pic2').src = randomCardArray[1];
         document.getElementById('pic3').src = randomCardArray[2];
@@ -43,6 +41,7 @@ function randomPic() {
         document.getElementById('pic8').src = randomCardArray[7];
     } for (let j=0; secondRandomCardArray.length < 8; j++) {
         let secondRandomNum = Math.floor(Math.random() * 8)
+        // if statement to ensure no duplicates in second array 
         if (secondRandomCardArray.includes(imageURLS[secondRandomNum]) !== true) {
         secondRandomCardArray.push(imageURLS[secondRandomNum])
         } else {
@@ -61,38 +60,85 @@ function randomPic() {
 
 randomPic()
 
-
-
-
-
-// var pic1 = randomCardArray[0];
-// var pic2 = randomCardArray[1];
-
-
-
-
-// IGNORE THIS
-// var x = document.images;
-// var txt = "";
-// var i;
-// for (i = 0; i < x.length; i++) {
-//     txt = txt + x[i].src + "<br>"
-// }
-// console.log(txt)
-
-
-
-
-
-
-
 // Need function for click/"flip"
-
-
-// Messy work below
 
 // let cards = document.getElementsByClassName('glitter')
 // let cardsHolder = document.getElementsByClassName('glitterHolder')
+
+function picClick1() {
+    document.getElementById('pic1').style.opacity = '1.0'
+    document.getElementById('holder1').style.backgroundColor = ''
+}
+function picClick2() {
+    document.getElementById('pic2').style.opacity = '1.0'
+    document.getElementById('holder2').style.backgroundColor = ''
+}
+function picClick3() {
+    document.getElementById('pic3').style.opacity = '1.0'
+    document.getElementById('holder3').style.backgroundColor = ''
+}
+function picClick4() {
+    document.getElementById('pic4').style.opacity = '1.0'
+    document.getElementById('holder4').style.backgroundColor = ''
+}
+function picClick5() {
+    document.getElementById('pic5').style.opacity = '1.0'
+    document.getElementById('holder5').style.backgroundColor = ''
+}
+function picClick6() {
+    document.getElementById('pic6').style.opacity = '1.0'
+    document.getElementById('holder6').style.backgroundColor = ''
+}
+function picClick7() {
+    document.getElementById('pic7').style.opacity = '1.0'
+    document.getElementById('holder7').style.backgroundColor = ''
+}
+function picClick8() {
+    document.getElementById('pic8').style.opacity = '1.0'
+    document.getElementById('holder8').style.backgroundColor = ''
+}
+function picClick9() {
+    document.getElementById('pic9').style.opacity = '1.0'
+    document.getElementById('holder9').style.backgroundColor = ''
+}
+function picClick10() {
+    document.getElementById('pic10').style.opacity = '1.0'
+    document.getElementById('holder10').style.backgroundColor = ''
+}
+function picClick11() {
+    document.getElementById('pic11').style.opacity = '1.0'
+    document.getElementById('holder11').style.backgroundColor = ''
+}
+function picClick12() {
+    document.getElementById('pic12').style.opacity = '1.0'
+    document.getElementById('holder12').style.backgroundColor = ''
+}
+function picClick13() {
+    document.getElementById('pic13').style.opacity = '1.0'
+    document.getElementById('holder13').style.backgroundColor = ''
+}
+function picClick14() {
+    document.getElementById('pic14').style.opacity = '1.0'
+    document.getElementById('holder14').style.backgroundColor = ''
+}
+function picClick15() {
+    document.getElementById('pic15').style.opacity = '1.0'
+    document.getElementById('holder15').style.backgroundColor = ''
+}
+function picClick16() {
+    document.getElementById('pic16').style.opacity = '1.0'
+    document.getElementById('holder16').style.backgroundColor = ''
+}
+
+// function picClickBrokenProbably() {
+//     for (let i = 0; i < cardArray.length; i++) {
+//         console.log("did it work")
+//         originalCardArray[i].style.opacity = '1.0'
+//     }
+// }
+
+
+// Messy work below
 
 // cardsHolder.onclick = function () {
 //     console.log("click test - holder")
@@ -108,9 +154,9 @@ randomPic()
 //     console.log("why")
 // }
 
-pic1.onclick = function() {
-    console.log("progress")
-}
+// pic1.onclick = function() {
+//     console.log("progress")
+// }
 
 // pic1.onclick = picClick();
 
@@ -129,10 +175,4 @@ pic1.onclick = function() {
 
 // if function?? 
 
-// function picClick() {
-//     for (let i = 0; i < cardArray.length; i++) {
-//         console.log("did it work")
-//         originalCardArray[i].style.opacity = '1.0'
-//     }
-// }
 
