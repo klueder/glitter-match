@@ -39,9 +39,9 @@ const cards = [
         "alt": "white glitter"
     },
     {
-        "color": "silver",
-        "src": "/glitterJPGs/silver.jpg",
-        "alt": "silver glitter"
+        "color": "orange",
+        "src": "/glitterJPGs/orange.jpg",
+        "alt": "orange glitter"
     }
 ]
 
@@ -84,84 +84,76 @@ function randomPicB() {
 randomPicA()
 randomPicB()
 
-// Function for click/"flip"
-
-function picClickA(x) {
-        document.getElementById(`picA${x}`).style.opacity = '1.0';
-        document.getElementById(`picA${x}`).dataset.switch = 'on'
-        console.log(document.getElementById(`picA${x}`).dataset.switch)
-        flippedCardArray.push(document.getElementById(`picA${x}`))
-        console.log(flippedCardArray)
-}
-function picClickB(x) {
-    document.getElementById(`picB${x}`).style.opacity = '1.0';
-    document.getElementById(`picB${x}`).dataset.switch = 'on'
-    console.log(document.getElementById(`picB${x}`).dataset.switch)
-    flippedCardArray.push(document.getElementById(`picB${x}`))
-    console.log(flippedCardArray)
-}
-
 // Need func to stop flips after two 
 
-// function stopClick() {
-//         if (flippedCardArray.length >= 2) {
+function stopClick() {
+    if (flippedCardArray.length >= 2) {
+        // ASK ABOUT THIS **************************
+        document.getElementsByClassName('glitter').style.pointerEvents = 'none'
+    } 
+}
 
-//         }
-    
-// }
+//             WORKING HERE *****************
+
+function compareCards() {
+    let textBox = document.getElementById('textBox')
+    if (flippedCardArray.length >= 2) {
+        if (flippedCardArray[0].src !== flippedCardArray[1].src) {
+            console.log("try again pal!")
+            textBox.innerText = "Not a match! Try again"
+            stopClick()
+        } else if (flippedCardArray[0].src == flippedCardArray[1].src) {
+            console.log("it's a match!")
+            textBox.innerText = "It's a match!"
+        }
+    }
+}
+
+// instead of stop click, make it compare the cards!!!!! then move on
 
 // NEED TO FIX SCORE FUNCTION
 // need function for score 
 
 // while loop?? (ex: while pic1 opacity = 1.0 && pic2 opacity = 1.0 && src == src etc etc )
 
-// if flippedCardArray >= 2 No more clicks 
-
-        // add if statements here
-        // then add keepScore function to run after if the if statements are true
+// add if statements here
+// then add keepScore function to run after if the if statements are true
 
 // function keepScore() {
-//     if ((document.getElementById('pic1').src == document.getElementById('pic9').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic9').dataset.switch = 'on')) {
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else if ((document.getElementById('pic1').src == document.getElementById('pic10').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic10').dataset.switch = 'on')) {
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else if ((document.getElementById('pic1').src == document.getElementById('pic11').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic11').dataset.switch = 'on')){
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else if ((document.getElementById('pic1').src == document.getElementById('pic12').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic12').dataset.switch = 'on')){
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else if ((document.getElementById('pic1').src == document.getElementById('pic13').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic13').dataset.switch = 'on')) {
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else if ((document.getElementById('pic1').src == document.getElementById('pic14').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic14').dataset.switch = 'on')) {
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else if ((document.getElementById('pic1').src == document.getElementById('pic15').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic15').dataset.switch = 'on')) {
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else if ((document.getElementById('pic1').src == document.getElementById('pic16').src) 
-//         && (document.getElementById('pic1').dataset.switch = 'on')
-//         && (document.getElementById('pic16').dataset.switch = 'on')){
-//         document.getElementById('scoreNumber').innerText += 1
-//     } else {
-//         console.log("error")
+//     for (var i=0, j=0; i<randomCardArrayA.length, j<randomCardArrayB.length; i++, j++) {
+//         if ((document.getElementById(`picA${i}`).src) == (document.getElementById(`picB${j}`).src)) {
+//             document.getElementById('scoreNumber').innerText += 1
+//         } else {
+//             console.log("didn't match!")
+//         }
 //     }
 // }
+
+// Function for click/"flip"
+
+function picClickA(x) {
+    stopClick()
+    document.getElementById(`picA${x}`).style.opacity = '1.0';
+    document.getElementById(`picA${x}`).dataset.switch = 'on'
+    console.log(document.getElementById(`picA${x}`).dataset.switch)
+    flippedCardArray.push(document.getElementById(`picA${x}`))
+    compareCards()
+    // keepScore()
+}
+function picClickB(x) {
+    stopClick()
+    document.getElementById(`picB${x}`).style.opacity = '1.0';
+    document.getElementById(`picB${x}`).dataset.switch = 'on'
+    console.log(document.getElementById(`picB${x}`).dataset.switch)
+    flippedCardArray.push(document.getElementById(`picB${x}`))
+    compareCards()
+    // keepScore()
+}
 
 // keepScore()
 // need function for no more than two cards flipped at once (unless already matched)
 
-console.log('break')
+console.log("break")
 
 // Messy work below
 
