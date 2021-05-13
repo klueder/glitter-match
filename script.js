@@ -1,6 +1,6 @@
 // use console.dir if you're stuck
 
-// MAKE THE "CARDS" INTO OBJECTS with src and alt attached
+// Array of 16 cards with two of each image
 
 const cards = [
     {
@@ -42,47 +42,84 @@ const cards = [
         "color": "orange",
         "src": "/glitterJPGs/orange.jpg",
         "alt": "orange glitter"
-    }
+    },
+    {
+        "color": "hot pink2",
+        "src": "/glitterJPGs/hotPink.jpg",
+        "alt": "hot pink glitter"
+      },
+      {
+          "color": "blue2",
+          "src": "/glitterJPGs/blue.jpg",
+          "alt": "bright blue glitter"
+      },
+      {
+          "color": "iridescent2",
+          "src": "/glitterJPGs/iridescent.jpg",
+          "alt": "iridescent glitter"
+      },
+      {
+          "color": "lime green2",
+          "src": "/glitterJPGs/lime.jpg",
+          "alt": "lime green glitter"
+      },
+      {
+          "color": "purple2",
+          "src": "/glitterJPGs/purple.jpg",
+          "alt": "purple glitter"
+      },
+      {
+          "color": "rainbow2",
+          "src": "/glitterJPGs/rainbow.jpg",
+          "alt": "rainbow stripe glitter"
+      },
+      {
+          "color": "white2",
+          "src": "/glitterJPGs/white.jpg",
+          "alt": "white glitter"
+      },
+      {
+          "color": "orange2",
+          "src": "/glitterJPGs/orange.jpg",
+          "alt": "orange glitter"
+      }
 ]
 
-
-// console.dir(cards[0])
-// console.log(cards[0].src)
-
-let randomCardArrayA = []
-let randomCardArrayB = []
+let randomCardArray = []
+let randomNumArray = []
 let flippedCardArray = []
-let imageURLS = [cards[0].src, cards[1].src, cards[2].src, cards[3].src, cards[4].src, cards[5].src, cards[6].src, cards[7].src]
 
-// Function for random img placement
-
-function randomPicA() {
-    for (let i = 0; randomCardArrayA.length < 8; i++) {
-        let randomNumA = Math.floor(Math.random() * 8)
-        // if statement to ensure image only appears once per array
-        while (randomCardArrayA.includes(imageURLS[randomNumA]) !== true) {
-        randomCardArrayA.push(imageURLS[randomNumA])
-        } 
-    for (let k = 0; k < randomCardArrayA.length; k++) {
-        document.getElementById(`picA${k}`).src = randomCardArrayA[k];
-    }
+// Function for random number
+function randomNumFunc() {
+    for (let i=0; randomNumArray.length < 16; i++) {
+        let randomNum = Math.floor(Math.random() * 16)
+        while (randomNumArray.includes(randomNum) !== true) {
+            randomNumArray.push(randomNum)
+        }
     } 
 }
-function randomPicB() {
-    for (let j=0; randomCardArrayB.length < 8; j++) {
-        let randomNumB = Math.floor(Math.random() * 8)
-        // if statement to ensure no duplicates in second array 
-        while (randomCardArrayB.includes(imageURLS[randomNumB]) !== true) {
-        randomCardArrayB.push(imageURLS[randomNumB])
+
+// Function for pushing random cards into their array using random number
+function randomPicPush() {
+    for (let i=0; randomCardArray.length < 16; i++) {
+            if (randomCardArray.includes(cards[randomNumArray[i]]) !== true) {
+                randomCardArray.push(cards[randomNumArray[i]])
+            }
         }
-    for (let l = 0; l < randomCardArrayB.length; l++) {
-        document.getElementById(`picB${l}`).src = randomCardArrayB[l];
-    }
+}
+
+// Function for random img placement display
+function randomPic () {
+    for (let i=0; i < randomCardArray.length; i++) {
+        document.getElementById(`pic${i}`).src = randomCardArray[i].src
     }
 }
 
-randomPicA()
-randomPicB()
+randomNumFunc()
+console.log(randomNumArray)
+randomPicPush()
+console.log(randomCardArray)
+randomPic()
 
 // Need func to stop flips after two 
 
@@ -114,8 +151,6 @@ function compareCards() {
 // NEED TO FIX SCORE FUNCTION
 // need function for score 
 
-// while loop?? (ex: while pic1 opacity = 1.0 && pic2 opacity = 1.0 && src == src etc etc )
-
 // add if statements here
 // then add keepScore function to run after if the if statements are true
 
@@ -131,24 +166,25 @@ function compareCards() {
 
 // Function for click/"flip"
 
-function picClickA(x) {
+function picClick(x) {
     stopClick()
-    document.getElementById(`picA${x}`).style.opacity = '1.0';
-    document.getElementById(`picA${x}`).dataset.switch = 'on'
-    console.log(document.getElementById(`picA${x}`).dataset.switch)
-    flippedCardArray.push(document.getElementById(`picA${x}`))
+    document.getElementById(`pic${x}`).style.opacity = '1.0';
+    document.getElementById(`pic${x}`).dataset.switch = 'on'
+    console.log(document.getElementById(`pic${x}`).dataset.switch)
+    flippedCardArray.push(document.getElementById(`pic${x}`))
     compareCards()
     // keepScore()
 }
-function picClickB(x) {
-    stopClick()
-    document.getElementById(`picB${x}`).style.opacity = '1.0';
-    document.getElementById(`picB${x}`).dataset.switch = 'on'
-    console.log(document.getElementById(`picB${x}`).dataset.switch)
-    flippedCardArray.push(document.getElementById(`picB${x}`))
-    compareCards()
-    // keepScore()
-}
+
+// function picClickB(x) {
+//     stopClick()
+//     document.getElementById(`picB${x}`).style.opacity = '1.0';
+//     document.getElementById(`picB${x}`).dataset.switch = 'on'
+//     console.log(document.getElementById(`picB${x}`).dataset.switch)
+//     flippedCardArray.push(document.getElementById(`picB${x}`))
+//     compareCards()
+//     // keepScore()
+// }
 
 // keepScore()
 // need function for no more than two cards flipped at once (unless already matched)
