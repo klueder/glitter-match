@@ -4,88 +4,105 @@ const cards = [
     {
       "color": "hot pink",
       "src": "/glitterJPGs/hotPink.jpg",
-      "alt": "hot pink glitter"
+      "alt": "hot pink glitter",
+      "data-switch": "off"
     },
     {
         "color": "blue",
         "src": "/glitterJPGs/blue.jpg",
-        "alt": "bright blue glitter"
+        "alt": "bright blue glitter",
+        "data-switch": "off"
     },
     {
         "color": "iridescent",
         "src": "/glitterJPGs/iridescent.jpg",
-        "alt": "iridescent glitter"
+        "alt": "iridescent glitter",
+        "data-switch": "off"
     },
     {
         "color": "lime green",
         "src": "/glitterJPGs/lime.jpg",
-        "alt": "lime green glitter"
+        "alt": "lime green glitter",
+        "data-switch": "off"
     },
     {
         "color": "purple",
         "src": "/glitterJPGs/purple.jpg",
-        "alt": "purple glitter"
+        "alt": "purple glitter",
+        "data-switch": "off"
     },
     {
         "color": "rainbow",
         "src": "/glitterJPGs/rainbow.jpg",
-        "alt": "rainbow stripe glitter"
+        "alt": "rainbow stripe glitter",
+        "data-switch": "off"
     },
     {
         "color": "white",
         "src": "/glitterJPGs/white.jpg",
-        "alt": "white glitter"
+        "alt": "white glitter",
+        "data-switch": "off"
     },
     {
         "color": "orange",
         "src": "/glitterJPGs/orange.jpg",
-        "alt": "orange glitter"
+        "alt": "orange glitter",
+        "data-switch": "off"
     },
     {
         "color": "hot pink2",
         "src": "/glitterJPGs/hotPink.jpg",
-        "alt": "hot pink glitter"
+        "alt": "hot pink glitter",
+        "data-switch": "off"
       },
       {
           "color": "blue2",
           "src": "/glitterJPGs/blue.jpg",
-          "alt": "bright blue glitter"
+          "alt": "bright blue glitter",
+          "data-switch": "off"
       },
       {
           "color": "iridescent2",
           "src": "/glitterJPGs/iridescent.jpg",
-          "alt": "iridescent glitter"
+          "alt": "iridescent glitter",
+          "data-switch": "off"
       },
       {
           "color": "lime green2",
           "src": "/glitterJPGs/lime.jpg",
-          "alt": "lime green glitter"
+          "alt": "lime green glitter",
+          "data-switch": "off"
       },
       {
           "color": "purple2",
           "src": "/glitterJPGs/purple.jpg",
-          "alt": "purple glitter"
+          "alt": "purple glitter",
+          "data-switch": "off"
       },
       {
           "color": "rainbow2",
           "src": "/glitterJPGs/rainbow.jpg",
-          "alt": "rainbow stripe glitter"
+          "alt": "rainbow stripe glitter",
+          "data-switch": "off"
       },
       {
           "color": "white2",
           "src": "/glitterJPGs/white.jpg",
-          "alt": "white glitter"
+          "alt": "white glitter",
+          "data-switch": "off"
       },
       {
           "color": "orange2",
           "src": "/glitterJPGs/orange.jpg",
-          "alt": "orange glitter"
+          "alt": "orange glitter",
+          "data-switch": "off"
       }
 ]
 
 let randomCardArray = []
 let randomNumArray = []
 let flippedCardArray = []
+let matchedCards = []
 
 // Function for random number
 function randomNumFunc() {
@@ -114,9 +131,9 @@ function randomPic () {
 }
 
 randomNumFunc()
-console.log(randomNumArray)
+// console.log(randomNumArray)
 randomPicPush()
-console.log(randomCardArray)
+// console.log(randomCardArray)
 randomPic()
 
 // Function to stop clicks after two cards are flipped
@@ -125,50 +142,116 @@ function stopClick() {
     let textBox = document.getElementById('textBox')
     if (flippedCardArray.length >= 2) {
         // ASK ABOUT THIS **************************
-        document.getElementsByClassName('glitter').style.pointerEvents = 'none'
-        textBox.innerText = "You already clicked two!"
+        for (let i=0; i < randomCardArray.length; i++) {
+        document.getElementById(`pic${i}`).style.pointerEvents = 'none'
+        // document.getElementById(`pic${i}`).onclick = function() {
+        //     textBox.innerText = "You already clicked two!"
+        // }
+        }
     } 
 }
 
-// Function to compare if cards match and let user know
-
-function compareCards() {
-    let textBox = document.getElementById('textBox')
-    if (flippedCardArray.length >= 2) {
-        if (flippedCardArray[0].src !== flippedCardArray[1].src) {
-            console.log("try again pal!")
-            textBox.innerText = "Not a match! Try again"
-            stopClick()
-        } else if (flippedCardArray[0].src == flippedCardArray[1].src) {
-            console.log("it's a match!")
-            textBox.innerText = "It's a match!"
-        }
-    }
-}
-
+// Function to compare if cards match and let user know (also adds to score)
 // need function for score 
 
+// function keepScore() {
+//     // let textBox = document.getElementById('textBox')
+//     let scoreNumber = document.getElementById('scoreNumber')
+//     // for (let i = x; i < matchedCards.length; i++) {
+//     if (matchedCards.length = x) {
+//         scoreNumber.innerText = 1
+//     } else if (matchedCards.length = x) {
+//         scoreNumber.innerText = 2
+//     } else if (matchedCards.length = x) {
+//         scoreNumber.innerText = 3
+//     } else if (matchedCards.length = x) {
+//         scoreNumber.innerText = 4
+//     }
+//     // }
+// }
+
+let foundAMatch = false;
 
 // function keepScore() {
-//     for (var i=0, j=0; i<randomCardArrayA.length, j<randomCardArrayB.length; i++, j++) {
-//         if ((document.getElementById(`picA${i}`).src) == (document.getElementById(`picB${j}`).src)) {
-//             document.getElementById('scoreNumber').innerText += 1
-//         } else {
-//             console.log("didn't match!")
-//         }
+//     if ((foundAMatch = true) && (matchedCards.length = 2)) {
+//         scoreNumber.innerText = 1
+//     } else if ((foundAMatch = true) && (matchedCards.length = 4)) {
+//         scoreNumber.innerText =2
 //     }
 // }
 
-// Function for click/"flip"
-
 function picClick(x) {
+    let textBox = document.getElementById('textBox')
     stopClick()
     document.getElementById(`pic${x}`).style.opacity = '1.0';
     document.getElementById(`pic${x}`).dataset.switch = 'on'
-    console.log(document.getElementById(`pic${x}`).dataset.switch)
     flippedCardArray.push(document.getElementById(`pic${x}`))
     compareCards()
-    // keepScore()
+
+    function changeColor() {
+        for (let i= 0; i < cards.length; i++) {
+            if ((foundAMatch == true) && (matchedCards.length >= 2) && (document.getElementById(`pic${x}`).dataset.switch = 'on')) {
+                document.getElementById(`pic${x}`).style.opacity = '0.5'
+                document.getElementById(`pic${x}`).style.pointerEvents = 'none'
+                document.getElementById(`pic${x}`).dataset.switch = 'matched'
+                // console.log(document.getElementById(`pic${x}`).dataset.switch)
+            } 
+        } 
+    }
+    setTimeout(changeColor, 1000)
+
+    function wrongTry() {
+        for (let i=0; i < cards.length; i++) {
+            if ((flippedCardArray.length >=2) && (document.getElementById(`pic${x}`).dataset.switch == 'on') && (foundAMatch == false)) {
+                document.getElementById(`pic${x}`).style.opacity = '0.1'
+                document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
+                document.getElementById(`pic${x}`).dataset.switch = 'off'
+            }
+        }
+    }
+    setTimeout(wrongTry, 1000)
+
+    function compareCards() {
+        let textBox = document.getElementById('textBox')
+        // let scoreNumber = document.getElementById('scoreNumber')
+        if (flippedCardArray.length >= 2) {
+            if (flippedCardArray[0].src == flippedCardArray[1].src) {
+                console.log("it's a match!")
+                textBox.innerText = "It's a match! Can you find another?"
+                matchedCards.push(flippedCardArray[0])
+                matchedCards.push(flippedCardArray[1])
+                // console.log(flippedCardArray)
+                flippedCardArray.splice(0,2)
+                console.log(matchedCards)
+                foundAMatch = true
+            } else if (flippedCardArray[0].src !== flippedCardArray[1].src) {
+                console.log("try again pal!")
+                textBox.innerText = "Not a match! Try again"
+                // stopClick()
+                foundAMatch = false;
+                // wrongTry()
+            }
+        } 
+    }
+    //need to add function(s) for if not a match************
+    // function fixWrongTry() {
+    //     if ((foundAMatch = false) && (document.getElementById(`pic${x}`).dataset.switch = 'on')) {
+    //         document.getElementById(`pic${x}`).style.opacity = '0.1'
+    //         document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
+    //     }
+    // }
+    // setTimeout(fixWrongTry(), 2000)
 }
 
-console.log("break")
+
+// else if (document.getElementById(`pic${x}`).dataset.switch = 'off') {
+//     document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
+// }
+
+
+// FOR ABOVE NOT BELOW : if matchedCards = 2, then score = 2, etc etc 
+
+// score function possibility - if matchedCards = x, score.innertext = y
+
+
+// Function for click/"flip"

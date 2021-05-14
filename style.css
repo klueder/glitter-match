@@ -24,7 +24,7 @@ h3 {
     text-align: center;
     align-items: center;
     margin: auto;
-    width: 50%;
+    width: 25%;
 }
 
 .picGrid {
@@ -44,7 +44,7 @@ h3 {
     /* border: white solid 3px; */
     width: 100%;
     height: auto;
-    opacity: 50%;
+    opacity: 10%;
 }
 
 .glitterHolder {
