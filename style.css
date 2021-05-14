@@ -4,6 +4,11 @@ body {
     font-family: 'Patrick Hand', cursive;
 }
 
+button {
+    font-family: 'Patrick Hand', cursive;
+    visibility: hidden;
+}
+
 h1 {
    font-size: 5rem;
    letter-spacing: 0.1em;
@@ -17,7 +22,7 @@ h3 {
     margin: -10px 0px 10px 5px;
 }
 
-#textBox {
+#commBox {
     border: white solid 2px;
     padding: 0px 0px 0px 0px;
     font-size: 1.5rem;
@@ -44,7 +49,7 @@ h3 {
     /* border: white solid 3px; */
     width: 100%;
     height: auto;
-    opacity: 20%;
+    opacity: 0%;
 }
 
 .glitterHolder {
@@ -62,3 +67,4 @@ h3 {
     height: auto;
     max-width: 100%;
 }
+

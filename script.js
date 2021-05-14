@@ -1,5 +1,5 @@
-// Array of 16 cards with two of each image
 
+// Array of 16 cards with two of each image
 const cards = [
     {
       "color": "hot pink",
@@ -99,9 +99,13 @@ const cards = [
       }
 ]
 
+// Array to hold cards after they are randomized
 let randomCardArray = []
+// Array to hold the random numbers to be used for randomization
 let randomNumArray = []
+// Array to hold cards after user click/"flips" them
 let flippedCardArray = []
+// Array to hold cards after they have been successfully matched
 let matchedCards = []
 
 // Function for random number
@@ -123,7 +127,7 @@ function randomPicPush() {
         }
 }
 
-// Function for random img placement display
+// Function for random card/img placement display
 function randomPic () {
     for (let i=0; i < randomCardArray.length; i++) {
         document.getElementById(`pic${i}`).src = randomCardArray[i].src
@@ -131,54 +135,21 @@ function randomPic () {
 }
 
 randomNumFunc()
-// console.log(randomNumArray)
 randomPicPush()
-// console.log(randomCardArray)
 randomPic()
 
 // Function to stop clicks after two cards are flipped
-
 function stopClick() {
     let textBox = document.getElementById('textBox')
     if (flippedCardArray.length >= 2) {
-        // ASK ABOUT THIS **************************
         for (let i=0; i < randomCardArray.length; i++) {
         document.getElementById(`pic${i}`).style.pointerEvents = 'none'
-        // document.getElementById(`pic${i}`).onclick = function() {
-        //     textBox.innerText = "You already clicked two!"
-        // }
         }
     } 
 }
 
-// Function to compare if cards match and let user know (also adds to score)
-// need function for score 
-
-// function keepScore() {
-//     // let textBox = document.getElementById('textBox')
-//     let scoreNumber = document.getElementById('scoreNumber')
-//     // for (let i = x; i < matchedCards.length; i++) {
-//     if (matchedCards.length = x) {
-//         scoreNumber.innerText = 1
-//     } else if (matchedCards.length = x) {
-//         scoreNumber.innerText = 2
-//     } else if (matchedCards.length = x) {
-//         scoreNumber.innerText = 3
-//     } else if (matchedCards.length = x) {
-//         scoreNumber.innerText = 4
-//     }
-//     // }
-// }
-
 let foundAMatch = false;
 
-// function keepScore() {
-//     if ((foundAMatch = true) && (matchedCards.length = 2)) {
-//         scoreNumber.innerText = 1
-//     } else if ((foundAMatch = true) && (matchedCards.length = 4)) {
-//         scoreNumber.innerText =2
-//     }
-// }
 // Function for click/"flip"
 function picClick(x) {
     let textBox = document.getElementById('textBox')
@@ -186,43 +157,27 @@ function picClick(x) {
     document.getElementById(`pic${x}`).style.opacity = '1.0';
     document.getElementById(`pic${x}`).dataset.switch = 'on'
     flippedCardArray.push(document.getElementById(`pic${x}`))
+    randomCardArray.pop(document.getElementById(`pic${x}`))
     compareCards()
 
-    // function wrongTry() {
-    //     for (let i=0; i < cards.length; i++) {
-    //         if ((flippedCardArray.length >=2) && (document.getElementById(`pic${x}`).dataset.switch == 'on') && (foundAMatch == false)) {
-    //             document.getElementById(`pic${x}`).style.opacity = '0.1'
-    //             document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
-    //             document.getElementById(`pic${x}`).dataset.switch = 'off'
-    //             function fixClickable() {
-    //                 for (let i=0; i< cards.length; i++) {
-    //                     if (document.getElementById(`pic${x}`).dataset.switch = 'off') {
-    //                         document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
-    //                         document.getElementById(`pic${x}`).style.opacity = '0.1'
-    //                     }
-    //                 }
-    //             }
-    //             setTimeout(fixClickable, 1000)
-    //         }
-    //     }
-    // }
-    // setTimeout(wrongTry, 1000)
-
+    // Function to change appearance/clickability of matched cards
     function changeColor() {
         for (let i= 0; i < cards.length; i++) {
             if ((foundAMatch == true) && (matchedCards.length >= 2) && (document.getElementById(`pic${x}`).dataset.switch = 'on')) {
-                document.getElementById(`pic${x}`).style.opacity = '0.5'
+                document.getElementById(`pic${x}`).style.opacity = '1.0'
                 document.getElementById(`pic${x}`).style.pointerEvents = 'none'
                 document.getElementById(`pic${x}`).dataset.switch = 'matched'
-                // console.log(document.getElementById(`pic${x}`).dataset.switch)
+                document.getElementById(`pic${x}`).style.visibility = 'hidden'
+                document.getElementById(`holder${x}`).style.backgroundColor = 'black'
             } 
         } 
     }
     setTimeout(changeColor, 1000)
 
+    // Function to compare if cards match and let user know
     function compareCards() {
+        let button = document.getElementById('tryAgain')
         let textBox = document.getElementById('textBox')
-        // let scoreNumber = document.getElementById('scoreNumber')
         if (flippedCardArray.length >= 2) {
             if (flippedCardArray[0].src == flippedCardArray[1].src) {
                 console.log("it's a match!")
@@ -230,31 +185,30 @@ function picClick(x) {
                 matchedCards.push(flippedCardArray[0])
                 matchedCards.push(flippedCardArray[1])
                 flippedCardArray.splice(0,2)
-                console.log(matchedCards)
+                matchedCards[0].dataset.switch = 'matched'
+                matchedCards[1].dataset.switch = 'matched'
                 foundAMatch = true
                 keepScore()
-                // keepScoreDouble()
             } else if (flippedCardArray[0].src !== flippedCardArray[1].src) {
                 console.log("try again pal!")
-                textBox.innerText = "Not a match! Try again"
-                // stopClick()
+                button.style.visibility = 'visible'
+                textBox.innerText = "Not a match!"
+                randomCardArray.push(flippedCardArray[0])
+                randomCardArray.push(flippedCardArray[1])
+                flippedCardArray[0].dataset.switch = 'off'
+                flippedCardArray[1].dataset.switch = 'off'
+                flippedCardArray.splice(0,2)
                 foundAMatch = false;
-                // wrongTry()
+
             }
         } 
     }
-    //need to add function(s) for if not a match************
-    // function fixWrongTry() {
-    //     if ((foundAMatch = false) && (document.getElementById(`pic${x}`).dataset.switch = 'on')) {
-    //         document.getElementById(`pic${x}`).style.opacity = '0.1'
-    //         document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
-    //     }
-    // }
-    // setTimeout(fixWrongTry(), 2000)
 }
 
+// Function to keep score and let user know when they win the game
 function keepScore() {
     let scoreNumber = document.getElementById('scoreNumber')
+    let textBox = document.getElementById('textBox')
     if (matchedCards.length == 2) {
         scoreNumber.innerText = 1
     } else if (matchedCards.length == 4) {
@@ -263,6 +217,7 @@ function keepScore() {
         scoreNumber.innerText = 3
     } else if (matchedCards.length == 8) {
         scoreNumber.innerText = 4
+        textBox.innerText = "Halfway there! Can you keep matching?"
     } else if (matchedCards.length == 10) {
         scoreNumber.innerText = 5
     } else if (matchedCards.length == 12) {
@@ -272,20 +227,23 @@ function keepScore() {
     } else if (matchedCards.length == 16) {
         scoreNumber.innerText = 8
         textBox.innerText = 'Hooray! You WIN!!!!!!'
-        textBox.style.fontSize = '5rem'
+        textBox.style.fontSize = '4rem'
     }
 }
 
-// function keepScoreDouble() {
-//     let scoreNumber = document.getElementById('scoreNumber')
-//     for (var i = 1, j = 2; i <8, j < 16; i++, j += 2) {
-//         if (matchedCards.length == 4) {
-//             scoreNumber.innerText = 2
-//         }
-//     }
-// }
-
-
-// FOR ABOVE NOT BELOW : if matchedCards = 2, then score = 2, etc etc 
-
-// score function possibility - if matchedCards = x, score.innertext = y
+// Function for tryAgain button to be used after two cards are flipped that do not match
+function tryAgainButton() {
+    let textBox = document.getElementById('textBox')
+    let button = document.getElementById('tryAgain')
+    button.style.visibility = 'hidden'
+    textBox.innerText = 'Good choice! Keep looking!'
+    for (let i=0; i<cards.length; i++) {
+        if (document.getElementById(`pic${i}`).dataset.switch = 'off') {
+            document.getElementById(`pic${i}`).style.opacity = '0.0'
+            document.getElementById(`pic${i}`).style.pointerEvents = 'auto'
+        // } else if (document.getElementById(`pic${i}`).dataset.switch = 'matched') {
+        //     document.getElementById(`pic${i}`).style.opacity = '1.0'
+        //     document.getElementById(`pic${i}`).style.pointerEvents = 'none'
+        }
+    }
+}
