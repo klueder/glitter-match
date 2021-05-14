@@ -179,7 +179,7 @@ let foundAMatch = false;
 //         scoreNumber.innerText =2
 //     }
 // }
-
+// Function for click/"flip"
 function picClick(x) {
     let textBox = document.getElementById('textBox')
     stopClick()
@@ -187,6 +187,26 @@ function picClick(x) {
     document.getElementById(`pic${x}`).dataset.switch = 'on'
     flippedCardArray.push(document.getElementById(`pic${x}`))
     compareCards()
+
+    // function wrongTry() {
+    //     for (let i=0; i < cards.length; i++) {
+    //         if ((flippedCardArray.length >=2) && (document.getElementById(`pic${x}`).dataset.switch == 'on') && (foundAMatch == false)) {
+    //             document.getElementById(`pic${x}`).style.opacity = '0.1'
+    //             document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
+    //             document.getElementById(`pic${x}`).dataset.switch = 'off'
+    //             function fixClickable() {
+    //                 for (let i=0; i< cards.length; i++) {
+    //                     if (document.getElementById(`pic${x}`).dataset.switch = 'off') {
+    //                         document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
+    //                         document.getElementById(`pic${x}`).style.opacity = '0.1'
+    //                     }
+    //                 }
+    //             }
+    //             setTimeout(fixClickable, 1000)
+    //         }
+    //     }
+    // }
+    // setTimeout(wrongTry, 1000)
 
     function changeColor() {
         for (let i= 0; i < cards.length; i++) {
@@ -200,17 +220,6 @@ function picClick(x) {
     }
     setTimeout(changeColor, 1000)
 
-    function wrongTry() {
-        for (let i=0; i < cards.length; i++) {
-            if ((flippedCardArray.length >=2) && (document.getElementById(`pic${x}`).dataset.switch == 'on') && (foundAMatch == false)) {
-                document.getElementById(`pic${x}`).style.opacity = '0.1'
-                document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
-                document.getElementById(`pic${x}`).dataset.switch = 'off'
-            }
-        }
-    }
-    setTimeout(wrongTry, 1000)
-
     function compareCards() {
         let textBox = document.getElementById('textBox')
         // let scoreNumber = document.getElementById('scoreNumber')
@@ -220,10 +229,11 @@ function picClick(x) {
                 textBox.innerText = "It's a match! Can you find another?"
                 matchedCards.push(flippedCardArray[0])
                 matchedCards.push(flippedCardArray[1])
-                // console.log(flippedCardArray)
                 flippedCardArray.splice(0,2)
                 console.log(matchedCards)
                 foundAMatch = true
+                keepScore()
+                // keepScoreDouble()
             } else if (flippedCardArray[0].src !== flippedCardArray[1].src) {
                 console.log("try again pal!")
                 textBox.innerText = "Not a match! Try again"
@@ -243,15 +253,39 @@ function picClick(x) {
     // setTimeout(fixWrongTry(), 2000)
 }
 
+function keepScore() {
+    let scoreNumber = document.getElementById('scoreNumber')
+    if (matchedCards.length == 2) {
+        scoreNumber.innerText = 1
+    } else if (matchedCards.length == 4) {
+        scoreNumber.innerText = 2
+    } else if (matchedCards.length == 6) {
+        scoreNumber.innerText = 3
+    } else if (matchedCards.length == 8) {
+        scoreNumber.innerText = 4
+    } else if (matchedCards.length == 10) {
+        scoreNumber.innerText = 5
+    } else if (matchedCards.length == 12) {
+        scoreNumber.innerText = 6
+    } else if (matchedCards.length == 14) {
+        scoreNumber.innerText = 7
+    } else if (matchedCards.length == 16) {
+        scoreNumber.innerText = 8
+        textBox.innerText = 'Hooray! You WIN!!!!!!'
+        textBox.style.fontSize = '5rem'
+    }
+}
 
-// else if (document.getElementById(`pic${x}`).dataset.switch = 'off') {
-//     document.getElementById(`pic${x}`).style.pointerEvents = 'auto'
+// function keepScoreDouble() {
+//     let scoreNumber = document.getElementById('scoreNumber')
+//     for (var i = 1, j = 2; i <8, j < 16; i++, j += 2) {
+//         if (matchedCards.length == 4) {
+//             scoreNumber.innerText = 2
+//         }
+//     }
 // }
 
 
 // FOR ABOVE NOT BELOW : if matchedCards = 2, then score = 2, etc etc 
 
 // score function possibility - if matchedCards = x, score.innertext = y
-
-
-// Function for click/"flip"
