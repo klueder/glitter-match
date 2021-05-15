@@ -34,7 +34,10 @@ h3 {
 
 .picGrid {
     border: white solid 2px;
-    margin: 5px 5px 5px 5px;
+    margin: 0 auto;
+    width: 1500px;
+    height: auto;
+    padding: 0px 0px 0px 150px;
 }
 
 .picList {
@@ -68,3 +71,13 @@ h3 {
     max-width: 100%;
 }
 
+#infoArea {
+    display: flex;
+}
+
+/* @media screen and (max-width: 600px) {
+    .glitterHolder img {
+        width: 24px;
+        height: auto;
+    }
+} */
