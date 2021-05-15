@@ -254,7 +254,6 @@ function tryAgainButton() {
     let button = document.getElementById('tryAgain')
     button.style.visibility = 'hidden'
     textBox.innerText = 'Good choice! Keep looking!'
-    console.log(nonMatchCards)
     for (let i=0; i<nonMatchCards.length; i++) {
         if (nonMatchCards.length >= 2) {
             if (nonMatchCards[i].dataset.switch !== 'matched') {
@@ -264,4 +263,8 @@ function tryAgainButton() {
             }
         }
     }
+}
+
+function resetButton() {
+    location.reload()
 }
