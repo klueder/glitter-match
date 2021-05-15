@@ -8,13 +8,13 @@
 
 ____
 
-#### Play it Here!
+### Play it Here
 
-
+- [Glitter Match!](https://klueder.github.io/glitter-match/)
 
 ___
 
-#### How to Play (& Win)
+### How to Play (& Win)
 
 - This game is (currently) a one-player game where the player clicks on cards with the goal of finding matches.
 - If the player finds a match (woohoo!), the game will notify the player and increase their score by one point. The matched cards will no longer be clickable and will stay flipped over so they are not confusing.
@@ -24,7 +24,7 @@ ___
 ___
 
 
-#### Coding Languages Used
+### Coding Languages Used
 
 - HTML
 - CSS
@@ -32,7 +32,7 @@ ___
 
 ___
 
-#### User Stories
+### User Stories
 
 ###### MVP Goals
 
@@ -52,7 +52,7 @@ ___
 
 ___
 
-#### Wireframes
+### Wireframes
 
 Wireframe for before game start
 
@@ -68,13 +68,13 @@ Wireframe for winning game!
 
 ___
 
-#### Approach to Making Glitter Match
+### Approach to Making Glitter Match
 
 While I had an idea of what I would need to do to make this game, with it being my first big software engineering project, I definitely did not really know upfront what would be needed. There was a **lot** of trial and error, and I also underestimated how much time would be needed for this. I was still able to make a functional game, but I plan to continue with updates in the future. (See more below)
 
 ___
 
-#### &#x1F534; Unresolved Issues, Hurdles Encountered, & Future Goals
+### &#x1F534; Unresolved Issues, Hurdles Encountered, & Future Goals
 
 - I struggled to make the function for after two cards are flipped that do not match work. I ended up making a button so the user could "try again" after a mismatch. The button did work, but I would like to eventually make the game continue automatically.
 - I would like to add a timer, a two-player option, and more than one level. 
