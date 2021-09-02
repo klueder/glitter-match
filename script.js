@@ -3,103 +3,104 @@
 const cards = [
     {
       "color": "hot pink",
-      "src": "/glitterJPGs/hotPink.jpg",
+      "src": "./glitterJPGs/hotPink.jpg",
       "alt": "hot pink glitter",
       "data-switch": "off"
     },
     {
         "color": "blue",
-        "src": "/glitterJPGs/blue.jpg",
+        "src": "./glitterJPGs/blue.jpg",
         "alt": "bright blue glitter",
         "data-switch": "off"
     },
     {
         "color": "iridescent",
-        "src": "/glitterJPGs/iridescent.jpg",
+        "src": "./glitterJPGs/iridescent.jpg",
         "alt": "iridescent glitter",
         "data-switch": "off"
     },
     {
         "color": "lime green",
-        "src": "/glitterJPGs/lime.jpg",
+        "src": "./glitterJPGs/lime.jpg",
         "alt": "lime green glitter",
         "data-switch": "off"
     },
     {
         "color": "purple",
-        "src": "/glitterJPGs/purple.jpg",
+        "src": "./glitterJPGs/purple.jpg",
         "alt": "purple glitter",
         "data-switch": "off"
     },
     {
         "color": "rainbow",
-        "src": "/glitterJPGs/rainbow.jpg",
+        "src": "./glitterJPGs/rainbow.jpg",
         "alt": "rainbow stripe glitter",
         "data-switch": "off"
     },
     {
         "color": "white",
-        "src": "/glitterJPGs/white.jpg",
+        "src": "./glitterJPGs/white.jpg",
         "alt": "white glitter",
         "data-switch": "off"
     },
     {
         "color": "orange",
-        "src": "/glitterJPGs/orange.jpg",
+        "src": "./glitterJPGs/orange.jpg",
         "alt": "orange glitter",
         "data-switch": "off"
     },
     {
         "color": "hot pink2",
-        "src": "/glitterJPGs/hotPink.jpg",
+        "src": "./glitterJPGs/hotPink.jpg",
         "alt": "hot pink glitter",
         "data-switch": "off"
       },
       {
           "color": "blue2",
-          "src": "/glitterJPGs/blue.jpg",
+          "src": "./glitterJPGs/blue.jpg",
           "alt": "bright blue glitter",
           "data-switch": "off"
       },
       {
           "color": "iridescent2",
-          "src": "/glitterJPGs/iridescent.jpg",
+          "src": "./glitterJPGs/iridescent.jpg",
           "alt": "iridescent glitter",
           "data-switch": "off"
       },
       {
           "color": "lime green2",
-          "src": "/glitterJPGs/lime.jpg",
+          "src": "./glitterJPGs/lime.jpg",
           "alt": "lime green glitter",
           "data-switch": "off"
       },
       {
           "color": "purple2",
-          "src": "/glitterJPGs/purple.jpg",
+          "src": "./glitterJPGs/purple.jpg",
           "alt": "purple glitter",
           "data-switch": "off"
       },
       {
           "color": "rainbow2",
-          "src": "/glitterJPGs/rainbow.jpg",
+          "src": "./glitterJPGs/rainbow.jpg",
           "alt": "rainbow stripe glitter",
           "data-switch": "off"
       },
       {
           "color": "white2",
-          "src": "/glitterJPGs/white.jpg",
+          "src": "./glitterJPGs/white.jpg",
           "alt": "white glitter",
           "data-switch": "off"
       },
       {
           "color": "orange2",
-          "src": "/glitterJPGs/orange.jpg",
+          "src": "./glitterJPGs/orange.jpg",
           "alt": "orange glitter",
           "data-switch": "off"
       }
 ]
 
 const pics = [document.getElementById('pic0'), document.getElementById('pic1'), document.getElementById('pic2'), document.getElementById('pic3'), document.getElementById('pic4'), document.getElementById('pic5'), document.getElementById('pic6'), document.getElementById('pic7'), document.getElementById('pic8'), document.getElementById('pic9'), document.getElementById('pic10'), document.getElementById('pic11'), document.getElementById('pic12'), document.getElementById('pic13'), document.getElementById('pic14'), document.getElementById('pic15')]
+
 
 // Array to hold cards after they are randomized
 let randomCardArray = []
